@@ -50,7 +50,7 @@ class Page implements MiddlewareInterface
                     return $factory->createResponse(200)->withBody($factory->createStream($config->get('site.close_reason@psrphp.web', '维护中...')));
                 } else {
                     $response = $factory->createResponse();
-                    $response->getBody()->write($template->renderFromString($page['content']));
+                    $response->getBody()->write($template->renderFromString($page['tpl']));
                     return $response;
                 }
             }

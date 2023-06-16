@@ -31,7 +31,7 @@ class Update extends Common
                 (new Col('col-md-8'))->addItem(
                     new Hidden('id', $version['id']),
                     new Input('页面', 'page', $version['page']),
-                    new Code('说明', 'content', $version['content']),
+                    new Code('模板', 'tpl', $version['tpl']),
                     new Radio('是否发布', 'state', $version['state'], [
                         '1' => '是',
                         '0' => '否',
@@ -53,7 +53,7 @@ class Update extends Common
 
         $update = array_intersect_key($request->post(), [
             'page' => '',
-            'content' => '',
+            'tpl' => '',
             'state' => '',
             'tips' => '',
         ]);

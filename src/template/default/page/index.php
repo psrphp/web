@@ -19,6 +19,7 @@
                 <tr>
                     <th class="text-nowrap">页面</th>
                     <th class="text-nowrap">备注</th>
+                    <th class="text-nowrap">是否发布</th>
                     <th class="text-nowrap">管理</th>
                 </tr>
             </thead>
@@ -26,10 +27,13 @@
                 {foreach $datas as $vo}
                 <tr>
                     <td>
-                        {$vo.page}
+                        <a href="{:$router->build('')}{$vo.page}" target="_blank">{$vo.page}</a>
                     </td>
                     <td>
                         {$vo.tips}
+                    </td>
+                    <td>
+                        {$vo['state']==1?'是':'否'}
                     </td>
                     <td>
                         <a href="{:$router->build('/psrphp/web/page/update', ['id'=>$vo['id']])}">编辑</a>

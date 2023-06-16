@@ -24,7 +24,7 @@ class Create extends Common
             (new Row())->addCol(
                 (new Col('col-md-9'))->addItem(
                     new Input('页面', 'page'),
-                    new Code('内容', 'content'),
+                    new Code('模板', 'tpl'),
                     new Radio('是否发布', 'state', 1, [
                         '1' => '是',
                         '0' => '否',
@@ -42,7 +42,7 @@ class Create extends Common
     ) {
         $db->insert('psrphp_web_page', [
             'page' => $request->post('page'),
-            'content' => $request->post('content'),
+            'tpl' => $request->post('tpl'),
             'state' => $request->post('state', 1, ['intval']),
             'tips' => $request->post('tips'),
         ]);
