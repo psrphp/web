@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Psrphp\Page\PsrPHP;
+namespace App\Psrphp\Web\PsrPHP;
 
 use PDO;
 

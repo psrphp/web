@@ -19,7 +19,7 @@ return [
             ];
         }
         if ($account->checkAuth(PageIndex::class)) {
-            $res[] = [
+            $menus[] = [
                 'title' => '页面管理',
                 'url' => $router->build('/psrphp/web/page/index'),
             ];

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Psrphp\Page\PsrPHP;
+namespace App\Psrphp\Web\PsrPHP;
 
-use App\Psrphp\Page\Middleware\Page;
+use App\Psrphp\Web\Middleware\Page;
 use PsrPHP\Psr15\RequestHandler;
 
 class Hook
