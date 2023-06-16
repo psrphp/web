@@ -23,12 +23,13 @@ class Create extends Common
         $form->addItem(
             (new Row())->addCol(
                 (new Col('col-md-9'))->addItem(
-                    new Input('名称', 'page'),
+                    new Input('页面', 'page'),
                     new Code('内容', 'content'),
                     new Radio('是否发布', 'state', 1, [
                         '1' => '是',
                         '0' => '否',
-                    ])
+                    ]),
+                    new Input('备注', 'tips')
                 )
             )
         );
@@ -43,6 +44,7 @@ class Create extends Common
             'page' => $request->post('page'),
             'content' => $request->post('content'),
             'state' => $request->post('state', 1, ['intval']),
+            'tips' => $request->post('tips'),
         ]);
         return Response::success('操作成功！', 'javascript:history.go(-2)');
     }

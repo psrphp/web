@@ -18,6 +18,7 @@
             <thead>
                 <tr>
                     <th class="text-nowrap">页面</th>
+                    <th class="text-nowrap">备注</th>
                     <th class="text-nowrap">管理</th>
                 </tr>
             </thead>
@@ -26,6 +27,9 @@
                 <tr>
                     <td>
                         {$vo.page}
+                    </td>
+                    <td>
+                        {$vo.tips}
                     </td>
                     <td>
                         <a href="{:$router->build('/psrphp/web/page/update', ['id'=>$vo['id']])}">编辑</a>

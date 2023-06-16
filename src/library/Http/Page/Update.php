@@ -35,7 +35,8 @@ class Update extends Common
                     new Radio('是否发布', 'state', $version['state'], [
                         '1' => '是',
                         '0' => '否',
-                    ])
+                    ]),
+                    new Input('备注', 'tips', $version['tips'])
                 )
             )
         );
@@ -54,6 +55,7 @@ class Update extends Common
             'page' => '',
             'content' => '',
             'state' => '',
+            'tips' => '',
         ]);
 
         $db->update('psrphp_web_page', $update, [
