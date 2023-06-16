@@ -1,6 +1,11 @@
 {include common/header@psrphp/admin}
 <div class="container">
-    <div class="display-4 my-4">页面管理</div>
+    <div class="my-4">
+        <div class="h1">单页管理</div>
+        <div class="text-muted fw-light">
+            <span>管理网站单页，支持模板标签~</span>
+        </div>
+    </div>
     <div class="my-4">
         <form id="form_filter" class="row gy-2 gx-3 align-items-center" action="{:$router->build('/psrphp/web/page/index')}" method="GET">
             <input type="hidden" name="page" value="1">
