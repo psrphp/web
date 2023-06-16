@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Psrphp\Web\Http;
+namespace App\Psrphp\Web\Http\Config;
 
 use App\Psrphp\Admin\Http\Common;
 use App\Psrphp\Admin\Lib\Response;
@@ -19,7 +19,7 @@ use PsrPHP\Request\Request;
 use PsrPHP\Router\Router;
 use PsrPHP\Framework\Config;
 
-class Set extends Common
+class Index extends Common
 {
     public function get(
         Router $router,

@@ -1,7 +1,8 @@
 <?php
 
 use App\Psrphp\Admin\Model\Account;
-use App\Psrphp\Web\Http\Set;
+use App\Psrphp\Web\Http\Config\Index;
+use App\Psrphp\Web\Http\Page\Index as PageIndex;
 use PsrPHP\Router\Router;
 use PsrPHP\Framework\Framework;
 
@@ -11,16 +12,18 @@ return [
         Router $router
     ): array {
         $menus = [];
-        if ($account->checkAuth(Set::class)) {
+        if ($account->checkAuth(Index::class)) {
             $menus[] = [
                 'title' => '网站设置',
-                'url' => $router->build('/psrphp/web/set'),
+                'url' => $router->build('/psrphp/web/config/index'),
             ];
         }
-        $menus[] = [
-            'title' => '访问首页',
-            'url' => $router->build('/'),
-        ];
+        if ($account->checkAuth(PageIndex::class)) {
+            $res[] = [
+                'title' => '页面管理',
+                'url' => $router->build('/psrphp/web/page/index'),
+            ];
+        }
         return $menus;
     })
 ];
