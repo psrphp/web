@@ -30,8 +30,8 @@ class Update extends Common
             (new Row())->addCol(
                 (new Col('col-md-8'))->addItem(
                     new Hidden('id', $version['id']),
-                    new Input('页面', 'page', $version['page']),
-                    new Code('模板', 'tpl', $version['tpl']),
+                    (new Input('页面', 'page', $version['page']))->set('help', '例如：/, /help, /about.html, /page/map.php'),
+                    (new Code('模板', 'tpl', $version['tpl']))->set('help', '支持模板标签'),
                     new Radio('是否发布', 'state', $version['state'], [
                         '1' => '是',
                         '0' => '否',

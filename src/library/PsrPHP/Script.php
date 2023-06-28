@@ -11,19 +11,6 @@ class Script
     public static function onInstall()
     {
         $sql = self::getInstallSql();
-        fwrite(STDOUT, "是否安装演示数据？y [y,n]：");
-        switch (trim((string) fgets(STDIN))) {
-            case '':
-            case 'y':
-            case 'yes':
-                fwrite(STDOUT, "安装演示数据\n");
-                $sql .= PHP_EOL . self::getDemoSql();
-                break;
-
-            default:
-                fwrite(STDOUT, "不安装演示数据\n");
-                break;
-        }
         self::execSql($sql);
     }
 
@@ -74,12 +61,6 @@ CREATE TABLE `prefix_psrphp_web_page` (
     `state` tinyint(4) NOT NULL DEFAULT '0',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
-str;
-    }
-
-    private static function getDemoSql(): string
-    {
-        return <<<'str'
 str;
     }
 

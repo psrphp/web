@@ -23,8 +23,8 @@ class Create extends Common
         $form->addItem(
             (new Row())->addCol(
                 (new Col('col-md-9'))->addItem(
-                    new Input('页面', 'page'),
-                    new Code('模板', 'tpl'),
+                    (new Input('页面', 'page'))->set('help', '例如：/, /help, /about.html, /page/map.php'),
+                    (new Code('模板', 'tpl'))->set('help', '支持模板标签'),
                     new Radio('是否发布', 'state', 1, [
                         '1' => '是',
                         '0' => '否',

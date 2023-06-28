@@ -29,7 +29,7 @@ class Index extends Common
         $form->addItem(
             (new Tab())->addTab(
                 (new TabItem('基础设置'))->addItem(
-                    (new Input('网站名称', 'psrphp[web][site][name]', $config->get('site.name@psrphp.web')))->set('help', '网站标题的后缀，一般不宜过长，例如:EBCMS'),
+                    (new Input('网站名称', 'psrphp[web][site][name]', $config->get('site.name@psrphp.web')))->set('help', '网站标题的后缀，一般不宜过长，例如:PSRPHP'),
                     (new Cover('网站标志', 'psrphp[web][site][logo]', $config->get('site.logo@psrphp.web'), $router->build('/psrphp/admin/upload')))->set('help', '最好不要上传太大的图片~'),
                     (new Switchs('是否关闭网站', 'psrphp[web][site][is_close]', $config->get('site.is_close@psrphp.web', 0)))->addSwitch(
                         (new SwitchItem('开启网站', 0))->addItem(
