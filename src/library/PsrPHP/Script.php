@@ -14,7 +14,7 @@ class Script
         self::execSql($sql);
     }
 
-    public static function onUninstall()
+    public static function onUnInstall()
     {
         $sql = '';
         fwrite(STDOUT, "是否删除数据库？y [y,n]：");
@@ -23,7 +23,7 @@ class Script
             case 'y':
             case 'yes':
                 fwrite(STDOUT, "删除数据库\n");
-                $sql .= PHP_EOL . self::getUninstallSql();
+                $sql .= PHP_EOL . self::getUnInstallSql();
                 break;
             default:
                 break;
@@ -64,7 +64,7 @@ CREATE TABLE `prefix_psrphp_web_page` (
 str;
     }
 
-    private static function getUninstallSql(): string
+    private static function getUnInstallSql(): string
     {
         return <<<'str'
 DROP TABLE IF EXISTS `prefix_psrphp_web_page`;
