@@ -6,16 +6,15 @@ namespace App\Psrphp\Web\Http;
 
 use App\Psrphp\Admin\Traits\RestfulTrait;
 use App\Psrphp\Web\Middleware\Close;
-use PsrPHP\Psr15\RequestHandler;
+use PsrPHP\Framework\Handler;
 
 abstract class Common
 {
     use RestfulTrait;
 
     public function __construct(
-        RequestHandler $requestHandler,
-        Close $closeMiddleware
+        Handler $handler
     ) {
-        $requestHandler->appendMiddleware($closeMiddleware);
+        $handler->pushMiddleware(Close::class);
     }
 }
