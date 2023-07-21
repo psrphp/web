@@ -3,7 +3,7 @@
 use PsrPHP\Framework\Script;
 
 return [
-    'unInstall' => function () {
+    'install' => function () {
         $sql = <<<'str'
 DROP TABLE IF EXISTS `prefix_psrphp_web_page`;
 CREATE TABLE `prefix_psrphp_web_page` (
