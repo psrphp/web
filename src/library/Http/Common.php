@@ -4,17 +4,31 @@ declare(strict_types=1);
 
 namespace App\Psrphp\Web\Http;
 
-use App\Psrphp\Admin\Traits\RestfulTrait;
-use App\Psrphp\Web\Middleware\Close;
-use PsrPHP\Framework\Handler;
+use App\Psrphp\Admin\Lib\Response;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use PsrPHP\Framework\Framework;
 
-abstract class Common
+abstract class Common implements RequestHandlerInterface
 {
-    use RestfulTrait;
-
-    public function __construct(
-        Handler $handler
-    ) {
-        $handler->pushMiddleware(Close::class);
+    public function handle(
+        ServerRequestInterface $request
+    ): ResponseInterface {
+        $method = strtolower($request->getMethod());
+        if (in_array($method, ['get', 'put', 'post', 'delete', 'head', 'patch', 'options']) && is_callable([$this, $method])) {
+            $resp = Framework::execute([$this, $method]);
+            if (is_scalar($resp) || (is_object($resp) && method_exists($resp, '__toString'))) {
+                return Response::html((string)$resp);
+            }
+            return $resp;
+        } else {
+            return Framework::execute(function (
+                ResponseFactoryInterface $responseFactory
+            ): ResponseInterface {
+                return $responseFactory->createResponse(405);
+            });
+        }
     }
 }

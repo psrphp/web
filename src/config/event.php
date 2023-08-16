@@ -1,14 +1,15 @@
 <?php
 
-use App\Psrphp\Web\Middleware\Page;
+use App\Psrphp\Web\Http\Common;
+use App\Psrphp\Web\Middleware\Close;
 use PsrPHP\Framework\Handler;
 
 return [
-    Handler::class => [
+    Common::class => [
         function (
             Handler $handler
         ) {
-            $handler->pushMiddleware(Page::class);
-        },
+            $handler->pushMiddleware(Close::class);
+        }
     ],
 ];
