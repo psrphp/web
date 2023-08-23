@@ -40,10 +40,7 @@ class Config extends Common
                             (new SwitchItem('关闭网站', 1))->addItem(
                                 (new Input('关闭原因', 'psrphp[web][site][close_reason]', $config->get('site.close_reason@psrphp.web')))->set('help', '例如：网站维护中...')
                             )
-                        ),
-                        (new Input('备案号', 'psrphp[web][site][beian]', $config->get('site.beian@psrphp.web')))
-                            ->set('help', '例如：京ICP备12345678-1号'),
-                        (new Input('联系人电子邮箱', 'psrphp[web][site][email]', $config->get('site.email@psrphp.web')))->set('help', '例如：xxx@xxx.xxx')
+                        )
                     )
                 ),
                 (new Col)->addItem(
@@ -51,6 +48,13 @@ class Config extends Common
                         (new Input('网站标题', 'psrphp[web][site][title]', $config->get('site.title@psrphp.web')))->set('help', '首页标题，例如：好用的网站管理系统'),
                         (new Input('网站关键词', 'psrphp[web][site][keywords]', $config->get('site.keywords@psrphp.web')))->set('help', '例如：cms psrphp 内容管理系统'),
                         (new Textarea('网站简介', 'psrphp[web][site][description]', $config->get('site.description@psrphp.web')))->set('help', '例如：psrphp是好用的内容管理系统')
+                    )
+                ),
+                (new Col)->addItem(
+                    (new Fieldset('其他信息'))->addItem(
+                        (new Input('备案号', 'psrphp[web][site][beian]', $config->get('site.beian@psrphp.web')))
+                            ->set('help', '例如：京ICP备12345678-1号'),
+                        (new Input('联系人电子邮箱', 'psrphp[web][site][email]', $config->get('site.email@psrphp.web')))->set('help', '例如：xxx@xxx.xxx')
                     )
                 )
             )
