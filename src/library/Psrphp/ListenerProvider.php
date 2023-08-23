@@ -8,23 +8,35 @@ use App\Psrphp\Admin\Model\MenuProvider;
 use App\Psrphp\Web\Http\Common;
 use App\Psrphp\Web\Http\Config;
 use App\Psrphp\Web\Middleware\Close;
+use Psr\EventDispatcher\ListenerProviderInterface;
+use PsrPHP\Framework\Framework;
 use PsrPHP\Framework\Handler;
-use PsrPHP\Framework\Listener;
 
-class ListenerProvider extends Listener
+class ListenerProvider implements ListenerProviderInterface
 {
-    public function __construct()
+    public function getListenersForEvent(object $event): iterable
     {
-        $this->add(Common::class, function (
-            Handler $handler
-        ) {
-            $handler->pushMiddleware(Close::class);
-        });
-
-        $this->add(MenuProvider::class, function (
-            MenuProvider $provider
-        ) {
-            $provider->add('网站设置', Config::class);
-        });
+        if (is_a($event, Common::class)) {
+            yield function () use ($event) {
+                Framework::execute(function (
+                    Handler $handler
+                ) {
+                    $handler->pushMiddleware(Close::class);
+                }, [
+                    Common::class => $event,
+                ]);
+            };
+        }
+        if (is_a($event, MenuProvider::class)) {
+            yield function () use ($event) {
+                Framework::execute(function (
+                    MenuProvider $provider
+                ) {
+                    $provider->add('网站设置', Config::class);
+                }, [
+                    MenuProvider::class => $event,
+                ]);
+            };
+        }
     }
 }
