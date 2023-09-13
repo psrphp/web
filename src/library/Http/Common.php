@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Psrphp\Web\Http;
 
 use App\Psrphp\Admin\Lib\Response;
-use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -24,11 +23,7 @@ abstract class Common implements RequestHandlerInterface
             }
             return $resp;
         } else {
-            return Framework::execute(function (
-                ResponseFactoryInterface $responseFactory
-            ): ResponseInterface {
-                return $responseFactory->createResponse(405);
-            });
+            return Response::error('不支持该请求')->withStatus(403);
         }
     }
 }
