@@ -40,7 +40,15 @@ class Config extends Common
                             (new SwitchItem('关闭网站', 1))->addItem(
                                 (new Input('关闭原因', 'psrphp[web][site][close_reason]', $config->get('site.close_reason@psrphp.web')))->setHelp('例如：网站维护中...')
                             )
-                        )
+                        ),
+                        (new Switchs('是否强制移除url中的index.php', 'psrphp[web][site][hidden_index_file]', $config->get('site.hidden_index_file@psrphp.web', 0)))->addSwitch(
+                            (new SwitchItem('不移除', 0))->addItem(
+                                new Html('推荐移除~')
+                            ),
+                            (new SwitchItem('移除', 1))->addItem(
+                                new Html('请配置伪静态，否则出现显示页面不存在~')
+                            )
+                        ),
                     )
                 ),
                 (new Col)->addItem(
